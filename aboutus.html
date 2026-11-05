@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Shop Finder</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+:root {
+    --primary:   #2d98da;
+    --secondary: #3867d6;
+    --light-bg:  #f7f9fc;
+    --white:     #ffffff;
+    --text:      #333333;
+    --muted:     #6b7280;
+    --border:    #e5e7eb;
+    --gold:      #ffeaa7;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; }
+
+/* ── NAVBAR ── */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--white);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.navbar h2 {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 22px;
+}
+.nav-links a {
+    margin: 0 10px;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* ── HERO BANNER ── */
+.hero-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+}
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+}
+.hero-banner h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    position: relative;
+}
+.hero-banner p {
+    font-size: 17px;
+    opacity: 0.88;
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ── SECTION WRAPPER ── */
+.section { padding: 70px 60px; }
+.section-alt { background: var(--white); }
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.section-sub {
+    text-align: center;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 50px;
+}
+.divider {
+    width: 55px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+    margin: 0 auto 14px;
+}
+
+/* ── WHO WE ARE ── */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.about-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 18px;
+    line-height: 1.3;
+}
+.about-text h2 span { color: var(--primary); }
+.about-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+.about-visual {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 20px;
+    padding: 50px 30px;
+    color: white;
+    text-align: center;
+}
+.about-visual .big-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+.about-visual h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.about-visual p {
+    font-size: 14px;
+    opacity: 0.85;
+    line-height: 1.7;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.stat-item {
+    padding: 35px 20px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    transition: background 0.25s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: #f0f8ff; }
+.stat-item .num {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-item .num span { color: var(--secondary); }
+.stat-item .label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+/* ── MISSION & VISION ── */
+.mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.mv-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 35px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 5px solid var(--primary);
+}
+.mv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(45,152,218,0.15);
+}
+.mv-card:nth-child(2) { border-top-color: var(--secondary); }
+.mv-card .mv-icon {
+    width: 68px; height: 68px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    color: white;
+    margin: 0 auto 22px;
+}
+.mv-card:nth-child(2) .mv-icon {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+.mv-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+.mv-card p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+/* ── WHAT WE OFFER ── */
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.offer-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 4px solid transparent;
+}
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(45,152,218,0.13);
+    border-bottom-color: var(--primary);
+}
+.icon-wrap {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 18px;
+}
+.ic-blue   { background: #dbeafe; color: #1d4ed8; }
+.ic-green  { background: #d1fae5; color: #065f46; }
+.ic-orange { background: #ffedd5; color: #9a3412; }
+.ic-purple { background: #ede9fe; color: #5b21b6; }
+.ic-red    { background: #fee2e2; color: #991b1b; }
+.ic-teal   { background: #ccfbf1; color: #0f766e; }
+.offer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+.offer-card p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── TEAM ── */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.team-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+    transition: transform 0.3s;
+}
+.team-card:hover { transform: translateY(-5px); }
+.avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto 16px;
+}
+.av1 { background: linear-gradient(135deg, #2d98da, #3867d6); }
+.av2 { background: linear-gradient(135deg, #20bf6b, #0fb9b1); }
+.av3 { background: linear-gradient(135deg, #fd9644, #e55039); }
+.team-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.team-card .role {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+.team-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── VALUES ── */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.value-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.3s;
+}
+.value-card:hover { transform: translateY(-4px); }
+.value-card .vi { font-size: 32px; margin-bottom: 12px; }
+.value-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.value-card p  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── CTA BAND ── */
+.cta-band {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-align: center;
+    padding: 65px 30px;
+}
+.cta-band h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.cta-band p  { font-size: 15px; opacity: 0.88; margin-bottom: 30px; }
+.cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn-white { background: white; color: var(--primary); }
+.btn-white:hover {
+    background: var(--gold);
+    color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.7);
+}
+.btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+}
+
+/* ── FOOTER ── */
+.footer {
+    text-align: center;
+    padding: 18px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+}
+.footer span { color: var(--gold); font-weight: 700; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .navbar { padding: 15px 20px; }
+    .nav-links a { margin: 0 5px; padding: 6px 12px; font-size: 13px; }
+    .section { padding: 50px 20px; }
+    .about-grid, .mv-grid { grid-template-columns: 1fr; }
+    .offer-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid  { grid-template-columns: 1fr 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+}
+@media (max-width: 580px) {
+    .hero-banner h1 { font-size: 28px; }
+    .offer-grid, .team-grid, .values-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2><i class="fas fa-store"></i> Shop Finder</h2>
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="customerlogin.html">Login</a>
+        <a href="customerregister.html">Register</a>
+    </div>
+</div>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+    <h1><i class="fas fa-store-alt"></i> About Shop Finder</h1>
+    <p>We connect customers with the best local shops making shopping smarter, faster, and more trustworthy.</p>
+</div>
+
+<!-- STATS BAR -->
+<div class="section section-alt" style="padding: 50px 60px;">
+        <div class="stat-item">
+            <div class="num">24<span>/7</span></div>
+            <div class="label"><i class="fas fa-headset"></i> Support Available</div>
+        </div>
+</div>
+
+<!-- WHO WE ARE -->
+<div class="section">
+    <div class="about-grid">
+        <div class="about-text">
+            <h2>Who We <span>Are</span></h2>
+            <p><strong>Shop Finder</strong> is a Rwanda-based platform designed to bridge the gap between local shop owners and everyday customers. We believe that finding a trusted shop should never be difficult.</p>
+            <p>Our platform allows verified shop owners to register and list their products, while customers can easily search, compare prices, and discover the best deals in their area — all in one place.</p>
+            <p>Built with simplicity and trust at its core, Shop Finder is your go-to directory for smarter, safer local shopping.</p>
+        </div>
+        <div class="about-visual">
+            <div class="big-icon"><i class="fas fa-store-alt"></i></div>
+            <h3>Connecting Shops &amp; Shoppers</h3>
+            <p>From registering your shop to finding the best price near you — Shop Finder makes every step simple and seamless.</p>
+        </div>
+    </div>
+</div>
+
+<!-- MISSION & VISION -->
+<div class="section section-alt">
+    <h2 class="section-title">Our Mission &amp; Vision</h2>
+    <div class="divider"></div>
+    <p class="section-sub">What drives us every day and where we aim to go.</p>
+    <div class="mv-grid">
+        <div class="mv-card">
+            <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Our Mission</h3>
+            <p>To empower local shop owners by giving them a digital presence, while helping customers make informed, confident shopping decisions. We simplify the search for trusted shops and fair prices across Rwanda.</p>
+        </div>
+        <div class="mv-card">
+            <div class="mv-icon"><i class="fas fa-eye"></i></div>
+            <h3>Our Vision</h3>
+            <p>To become the leading local shop discovery platform in East Africa — a trusted space where every shop owner can grow their business and every customer can shop smarter, faster, and safer.</p>
+        </div>
+    </div>
+</div>
+
+<!-- WHAT WE OFFER -->
+<div class="section">
+    <h2 class="section-title">What We Offer</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Everything you need — whether you are a customer or a shop owner.</p>
+    <div class="offer-grid">
+        <div class="offer-card">
+            <div class="icon-wrap ic-blue"><i class="fas fa-search"></i></div>
+            <h3>Easy Shop Search</h3>
+            <p>Find verified shops near you in seconds. Search by name, category, or product to get exactly what you need.</p>
+        </div>
+        <div class="offer-card">
+            <div class="icon-wrap ic-green"><i class="fas fa-shield-alt"></i></div>
+            <h3>Verified Shops</h3>
+            <p>All shops on our platform go through a registration process, so you can shop with confidence and trust.</p>
+        </div>
+        <div class="offer-card">
+            <div class="icon-wrap ic-orange"><i class="fas fa-tags"></i></div>
+            <h3>Best Price Comparison</h3>
+            <p>Compare prices across multiple shops and always find the best deal without wasting time or money.</p>
+        </div>
+        <div class="offer-card">
+            <div class="icon-wrap ic-purple"><i class="fas fa-store"></i></div>
+            <h3>Shop Owner Dashboard</h3>
+            <p>Shop owners get a personal dashboard to manage their profile, list products, and track customer interest.</p>
+        </div>
+        <div class="offer-card">
+            <div class="icon-wrap ic-red"><i class="fas fa-user-shield"></i></div>
+            <h3>Secure Accounts</h3>
+            <p>Your account is protected with secure login, password management, and admin oversight for full safety.</p>
+        </div>
+        <div class="offer-card">
+            <div class="icon-wrap ic-teal"><i class="fas fa-headset"></i></div>
+            <h3>24/7 Support</h3>
+            <p>Our support team is always ready to help. Reach us anytime through our Contact page for fast assistance.</p>
+        </div>
+    </div>
+</div>
+
+<!-- OUR VALUES -->
+<div class="section section-alt">
+    <h2 class="section-title">Our Core Values</h2>
+    <div class="divider"></div>
+    <p class="section-sub">The principles that guide every decision we make.</p>
+    <div class="values-grid">
+        <div class="value-card">
+            <div class="vi">🤝</div>
+            <h4>Trust</h4>
+            <p>We verify every shop and protect every user so you can always rely on our platform.</p>
+        </div>
+        <div class="value-card">
+            <div class="vi">💡</div>
+            <h4>Innovation</h4>
+            <p>We continually improve our tools and features to give you the best possible experience.</p>
+        </div>
+        <div class="value-card">
+            <div class="vi">🌍</div>
+            <h4>Community</h4>
+            <p>We exist to support local businesses and build stronger communities through commerce.</p>
+        </div>
+        <div class="value-card">
+            <div class="vi">⚡</div>
+            <h4>Simplicity</h4>
+            <p>We make complex things simple — clean design, easy navigation, instant results.</p>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM -->
+<div class="section">
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="divider"></div>
+    <p class="section-sub">The passionate people behind Shop Finder.</p>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="avatar av1">E</div>
+            <h3>Nkundimana Elie</h3>
+            <div class="role">Founder &amp; Lead Developer</div>
+            <p>Elie built Shop Finder from the ground up, combining his passion for technology and local commerce to create a platform that truly serves Rwandan communities.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar av2">S</div>
+            <h3>Support Team</h3>
+            <div class="role">Customer &amp; Shop Support</div>
+            <p>Our dedicated support staff ensure every customer and shop owner has a smooth, positive experience on the platform from registration to daily use.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar av3">A</div>
+            <h3>Admin &amp; Operations</h3>
+            <div class="role">Platform Management</div>
+            <p>The admin team keeps the platform running safely verifying shops, managing accounts, and ensuring the highest quality of service at all times.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+    <h2>Ready to Join Shop Finder?</h2>
+    <p>Sign up as a customer to discover great shops, or register your shop and grow your business today.</p>
+    <div class="cta-buttons">
+        <a href="customerregister.html" class="btn btn-white">
+            <i class="fas fa-user-plus"></i> Register</a>
+        <a href="contact.html" class="btn btn-outline">
+            <i class="fas fa-envelope"></i> Contact Us
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>&copy; 2026 <span>Elie</span> | Shop Finder</p>
+</div>
+
+</body>
+</html>

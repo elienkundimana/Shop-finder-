@@ -1,0 +1,104 @@
+<?php
+// contact.php
+
+// Connect to MySQL
+$conn = mysqli_connect("localhost", "root", "", "shop_finder");
+if (!$conn) die("Connection failed: " . mysqli_connect_error());
+
+// Initialize a variable for success message
+$success = false;
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+
+    $sql = "INSERT INTO contacts (name, email, message) VALUES ('$name', '$email', '$message')";
+
+    if (mysqli_query($conn, $sql)) {
+        $success = true; // Set success flag
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+mysqli_close($conn);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Shop Finder</title>
+<style>
+/* Your CSS copied from previous code */
+* {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+body {background: #f5f6fa;}
+.navbar {display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+.navbar h2 {color: #2d98da;}
+.nav-links a {margin: 0 15px; text-decoration: none; color: #333; font-weight: bold;}
+.nav-links a:hover {color: #2d98da;}
+.header {height: 40vh; background: url('image.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: white;}
+.header h1 {background: rgba(0,0,0,0.6); padding: 15px 30px; border-radius: 5px;}
+.contact-container {display: flex; justify-content: center; align-items: flex-start; gap: 40px; padding: 60px 20px;}
+.contact-form {background: white; padding: 30px; border-radius: 10px; width: 350px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+.contact-form h2 {margin-bottom: 20px; color: #2d98da;}
+.contact-form input, .contact-form textarea {width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;}
+.contact-form button {width: 100%; padding: 12px; background: #2d98da; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;}
+.contact-form button:hover {background: #3867d6;}
+.contact-info {max-width: 400px;}
+.contact-info h2 {color: #2d98da; margin-bottom: 15px;}
+.contact-info p {margin-bottom: 10px; line-height: 1.5;}
+.footer {text-align: center; padding: 15px; background: #2d98da; color: white;}
+.footer span {color: #ffeaa7;}
+.success-message {color: green; font-weight: bold; margin-bottom: 15px;}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Shop Finder</h2>
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="#">Shops</a>
+        <a href="#">Products</a>
+        <a href="contact.php">Contact</a>
+    </div>
+</div>
+
+<div class="header">
+    <h1>Contact Us</h1>
+</div>
+
+<div class="contact-container">
+<div class="contact-form">
+    <h2>Send Message</h2>
+
+    <!-- Show success message -->
+    <?php if($success) { ?>
+        <p class="success-message">Message sent successfully!</p>
+    <?php } ?>
+
+    <form action="contact.php" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<div class="contact-info">
+    <h2>Get in Touch</h2>
+    <p><strong>Email:</strong> nkundimanaelie91@gmail.com</p>
+    <p><strong>Phone:</strong> +250786799347</p>
+    <p>We are here to help you find the best shops and deals. Feel free to contact us anytime and we will respond as soon as possible.</p>
+</div>
+</div>
+
+<div class="footer">
+    <p>© 2026 <span>Elie</span> | Shop Finder</p>
+</div>
+
+</body>
+</html>

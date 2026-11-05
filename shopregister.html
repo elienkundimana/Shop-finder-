@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Owner Registration - Shop Finder</title>
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Buttons */
+.top-nav {
+    text-align: center;
+    padding: 30px 0 20px 0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 10px 25px;
+    margin: 0 10px;
+    background: linear-gradient(45deg, #4facfe, #007BFF);
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(45deg, #007BFF, #4facfe);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Form Container */
+.login-box {
+    background: #fff;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.login-box h2 {
+    text-align: center;
+    color: #2d98da;
+    margin-bottom: 30px;
+}
+
+/* Form */
+.login-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.login-box input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.login-box button {
+    padding: 12px;
+    background: #2d98da;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #3867d6;
+}
+
+/* Footer */
+footer.footer {
+    text-align: center;
+    padding: 20px;
+    background: #2d98da;
+    color: white;
+    margin-top: auto;
+}
+
+footer.footer span {
+    color: #ffeaa7;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .login-box {
+        margin: 20px;
+        padding: 30px;
+    }
+
+    .nav-btn {
+        padding: 10px 15px;
+        margin: 5px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation Buttons -->
+<div class="top-nav">
+    <a href="index.php" class="nav-btn">Back Home</a>
+    <a href="customerregister.html" class="nav-btn">Customer Register</a>
+</div>
+
+<!-- Registration Form -->
+<div class="login-box">
+    <h2>Register as Shop Owner</h2>
+    <form action="shopregister.php" method="POST">
+        <label>Shop Email:</label>
+        <input type="email" name="email" placeholder="Enter your shop email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 <span>Elie</span> | Shop Finder</p>
+</footer>
+
+</body>
+</html>
